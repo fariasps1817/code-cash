@@ -3,34 +3,52 @@
         <meta charset="UTF-8">
         <title>Code Cash</title>
         <script>
-            //padrão de nomeclatura de variáveis no JavaScript
-            const nome = 'Farias Sousa'; //string
-            const idade = 50; //number
-            const active = true; //boolean
-            const vote = null; //null
-            const contain = undefined; //undefined
+        /*
+        const name = window.prompt("Digite seu nome:");
 
- //           console.log("Olá mundo!");
- //           window.alert("Olá mundo!");
-
-            console.log(nome, typeof nome);
-            // console.log(typeof nome);
-            console.log(idade, typeof idade);
-            // console.log(typeof idade);
-            console.log(active, typeof active);
-            // console.log(typeof active);
-            console.log(vote, typeof vote);
-            // console.log(typeof vote);
-            console.log(contain, typeof contain);
-            // console.log(typeof contain);
-
-            console.log('meu nome é ' + nome + ' e tenho ' + idade + ' anos');
-            console.log(`meu nome é ${nome} e tenho ${idade} anos`);
-            
-/*
-teste de comentário de multiplas linhas
-mais uma linha do teste
+            if (name) {
+                window.alert(`Olá, ${name}! Seja bem vindo ao Code Cash!`);
+            } else if (name === "") {
+                window.alert("Olá! Seja bem vindo ao Code Cash!");
+            } else {
+                window.alert("Operação cancelada");
+            }
 */
+
+// ESTRUTURA CONDICIONAL
+            // const temperature = window.prompt("Digite a temperatura");
+            // if (temperature > 30) {
+            //     window.alert("Calor medonho!");
+            // } else if (temperature >= 25) {
+            //     window.alert("Está quente!");
+            // } else if (temperature >= 15) {
+            //     window.alert("clima agradável!");
+            // } else if (temperature >= 5) {
+            //     window.alert("Está frio!");
+            // } else {
+            //     window.alert("frio");
+            // }
+
+//LAÇO DE REPETIÇÃO
+            for (let i = 1; i <= 100; i = i + 1) {
+                if (i % 2 === 0) {
+                    if (i % 5 === 0) {
+                        console.log(`MENINA: ${i}`);
+                    } else {
+                        console.log(`MARMENINA: ${i}`);
+                    }
+                    console.log(`MAR: ${i}`);
+                }  
+                
+            }
+
+
+
+
+
+
+
+
         </script>
     </head>
 </html>
