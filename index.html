@@ -28,6 +28,8 @@
 
       let balance = 0;
 
+      const statement = [];
+
       const operations = {
         check: () => {
           window.alert(`Saldo atual: R$ ${balance}`);
@@ -47,6 +49,14 @@
 
           balance = balance + Number(deposit);
           window.alert(`Saldo atual: R$ ${balance}`);
+
+          statement[statement.length] = {
+            type: 'Depósito',
+            value: Number(deposit)
+          }
+
+
+
         },
         cashOut: () => {
           const cashout = prompt('Valor do saque');
@@ -63,7 +73,35 @@
 
           balance = balance - Number(cashout);
           window.alert(`Saldo atual: R$ ${balance}`);
+
+
+
+          statement[statement.length] = {
+            type: 'Saque',
+            value: Number(cashout)
+          }
         },
+
+        statement: () => {
+          if (statement.length === 0) {
+            return window.alert('Não há movimentações para exibir.');
+          }
+
+          let text = 'Extrato:\n\n';
+
+          for (let i = 0; i < statement.length; i++) {
+            text += `${i + 1}. ${statement[i].type}: ${statement[i].value} $date\n`;
+          }
+
+          window.alert(text);
+
+
+
+        },
+
+
+
+
         exit: () => {
           window.alert('Foi um prazer atendê-lo. Até logo!');
           repeat = false;
@@ -80,7 +118,8 @@
           1. Consultar
           2. Depositar
           3. Sacar
-          4. Sair
+          4. Extrato
+          5. Sair
         `));
   
         switch (operation) {
@@ -94,6 +133,9 @@
             operations.cashOut();
             break;
           case 4:
+            operations.statement();
+            break;
+          case 5:
             operations.exit();
             break;
           default:
