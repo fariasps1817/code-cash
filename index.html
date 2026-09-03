@@ -27,7 +27,6 @@
       greet();
 
       let balance = 0;
-
       const statement = [];
 
       const operations = {
@@ -51,12 +50,9 @@
           window.alert(`Saldo atual: R$ ${balance}`);
 
           statement[statement.length] = {
-            type: 'Depósito',
+            type: 'Depositar',
             value: Number(deposit)
-          }
-
-
-
+          };
         },
         cashOut: () => {
           const cashout = prompt('Valor do saque');
@@ -68,40 +64,37 @@
 
           if (Number(cashout) < 1 || isNaN(cashout)) {
             window.alert('Valor inválido.');
-            return operations.cashout();
+            return operations.cashOut();
+          }
+
+          if (Number(cashout) > balance) {
+            window.alert(`
+            Saldo insuficiente.
+            Saldo atual: R$ ${balance}`);
+            return operations.cashOut();
           }
 
           balance = balance - Number(cashout);
           window.alert(`Saldo atual: R$ ${balance}`);
 
-
-
           statement[statement.length] = {
-            type: 'Saque',
+            type: 'Sacar',
             value: Number(cashout)
-          }
+          };
         },
-
         statement: () => {
           if (statement.length === 0) {
-            return window.alert('Não há movimentações para exibir.');
+            return window.alert('Nenhuma transação registrada.');
           }
 
-          let text = 'Extrato:\n\n';
+          let text = 'Extrato\n\n';
 
           for (let i = 0; i < statement.length; i++) {
-            text += `${i + 1}. ${statement[i].type}: ${statement[i].value} $date\n`;
+            text += `${i + 1}. ${statement[i].type}: ${statement[i].value}\n`;
           }
 
           window.alert(text);
-
-
-
         },
-
-
-
-
         exit: () => {
           window.alert('Foi um prazer atendê-lo. Até logo!');
           repeat = false;
@@ -112,7 +105,7 @@
       }
 
       while (repeat) {
-        const operation = Number(prompt(`
+        const operation = prompt(`
           Escolha uma operação:
   
           1. Consultar
@@ -120,9 +113,15 @@
           3. Sacar
           4. Extrato
           5. Sair
-        `));
-  
-        switch (operation) {
+        `);
+
+        if (operation === null) {
+          window.alert('Operação cancelada');
+          repeat = false;
+          continue;
+        }
+
+        switch (Number(operation)) {
           case 1:
             operations.check();
             break;
@@ -141,8 +140,9 @@
           default:
             operations.invalid();
         }
+  
       }
-
+      
     </script>
   </head>
 </html>
